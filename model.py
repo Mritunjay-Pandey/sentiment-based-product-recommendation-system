@@ -56,7 +56,7 @@ class Recommendation:
         #mdl=pd.read_pickle('final_lr.pkl')
         #features = pickle.load(open('features.pkl','rb'))
         #vectorizer = TfidfVectorizer(vocabulary = features)
-        items=items.index.get_level_values('productId').unique().tolist()
+        items=items.get_level_values('productId').unique().tolist()
         print(items)
         temp=self.data[self.data.id.isin(items)]
         print(temp)
