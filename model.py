@@ -23,16 +23,16 @@ class Recommendation:
         nltk.download('punkt')
         nltk.download('averaged_perceptron_tagger')
         nltk.download('wordnet')
-        self.data = pickle.load(open('data.pkl','rb'))
-        self.user_final_rating = pickle.load(open('user_final_rating.pkl','rb'))
-        self.model = pickle.load(open('logistic_regression.pkl','rb'))
-        self.raw_data = pd.read_csv("sample30.csv")
+        self.data = pickle.load(open('models/data.pkl','rb'))
+        self.user_final_rating = pickle.load(open('models/user_final_rating.pkl','rb'))
+        self.model = pickle.load(open('models/logistic_regression_model.pkl','rb'))
+        self.raw_data = pd.read_csv("dataset/sample30.csv")
         self.data = pd.concat([self.raw_data[['id','name','brand','categories','manufacturer']],self.data], axis=1)
         
         
     def getTopProducts(self, user):
         items = self.user_final_rating.loc[user].sort_values(ascending=False)[0:20].index
-        tfs=pd.read_pickle('tfidf.pkl')
+        tfs=pd.read_pickle('models/tfidf.pkl')
         temp=self.data[self.data.id.isin(items)]
         X = tfs.transform(temp['Review'].values.astype(str))
         temp=temp[['id']]
@@ -46,7 +46,7 @@ class Recommendation:
 
     def getTopProductsNew(self, user):
         items = self.user_final_rating.loc[user].sort_values(ascending=False)[0:20].index
-        tfs=pd.read_pickle('tfidf.pkl')
+        tfs=pd.read_pickle('models/tfidf.pkl')
         #mdl=pd.read_pickle('final_lr.pkl')
         #features = pickle.load(open('features.pkl','rb'))
         #vectorizer = TfidfVectorizer(vocabulary = features)
@@ -97,8 +97,8 @@ class Recommendation:
         return " ".join(lemmatized_sentence)
 
     def analyiseSentiment(self,text):
-            tfs=pd.read_pickle('tfidf.pkl')
-            mdl=pd.read_pickle('final_lr.pkl')
+            tfs=pd.read_pickle('models/tfidf.pkl')
+            mdl=pd.read_pickle('models/logistic_regression_model.pkl')
             #preprocess text
 
             # remove html
