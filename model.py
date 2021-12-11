@@ -11,6 +11,7 @@ class Recommendation:
     
     def __init__(self):
         self.data = pickle.load(open('models/data.pkl','rb'))
+        print(sel)
         self.user_final_rating = pickle.load(open('models/user_final_rating.pkl','rb'))
         self.model = pickle.load(open('models/random_forest_tuned_model.pkl','rb'))
         self.raw_data = pd.read_csv("dataset/sample30.csv")
@@ -21,6 +22,8 @@ class Recommendation:
         print(items)
         tfs=pd.read_pickle('models/tfidf.pkl')
         print(tfs)
+        print('Mritunjay')
+        print(self.data.id)
         #mdl=pd.read_pickle('final_lr.pkl')
         #features = pickle.load(open('features.pkl','rb'))
         #vectorizer = TfidfVectorizer(vocabulary = features)
