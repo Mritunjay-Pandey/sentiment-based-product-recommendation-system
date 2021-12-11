@@ -11,11 +11,12 @@ class Recommendation:
     
     def __init__(self):
         self.data = pickle.load(open('models/data.pkl','rb'))
-        print(sel)
+        print(self.data)
         self.user_final_rating = pickle.load(open('models/user_final_rating.pkl','rb'))
         self.model = pickle.load(open('models/random_forest_tuned_model.pkl','rb'))
         self.raw_data = pd.read_csv("dataset/sample30.csv")
         self.data = pd.concat([self.raw_data[['id','name','brand','categories','manufacturer']],self.data], axis=1)
+        print(self.data)
  
     def getTopProductsNew(self, user):
         items = self.user_final_rating.loc[user].sort_values(ascending=False)[0:20].index
