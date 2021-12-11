@@ -51,6 +51,8 @@ class Recommendation:
         print('Mritunjay')
         print(tfs)
         print('Mritunjay')
+        print(self.data)
+        print('Mritunjay123')
         #mdl=pd.read_pickle('final_lr.pkl')
         #features = pickle.load(open('features.pkl','rb'))
         #vectorizer = TfidfVectorizer(vocabulary = features)
