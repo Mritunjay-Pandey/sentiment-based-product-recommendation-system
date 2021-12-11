@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Product Recommendation System based on Users Reviews & Ratings</title>
+    <title>Sentiment Based Product Recommendation System</title>
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,28 +15,29 @@
     <style>
         .fakeimg {
             height: 200px;
-
+            
         }
-
+        
         .emoji-smile {
             position: relative;
             width: 120px;
             height: 120px;
-
+           
         }
-
+        
         .emoji-sad {
             position: relative;
             width: 120px;
             height: 120px;
             margin-left: 1%;
         }
-
+        
         .face {
             width: inherit;
             height: inherit;
         }
-
+        
+      
         .eye-right {
             position: absolute;
             width: 11px;
@@ -45,7 +46,7 @@
             top: 40px;
             border-radius: 50%;
         }
-
+        
         .mouth-happy {
             position: absolute;
             width: 78px;
@@ -56,7 +57,7 @@
             border-radius: 50%;
             border-bottom-color: green;
         }
-
+        
         .mouth-sad {
             position: absolute;
             width: 78px;
@@ -68,74 +69,86 @@
             border-radius: 50%;
             border-top-color: green;
         }
-
+        
         // Class
         .visible {
             visibility: visible;
         }
-
+        
         .invisible {
             visibility: hidden;
         }
-
+        
         // Usage as a mixin
         .element {
             @include invisible(visible);
         }
-
+        
         .element {
             @include invisible(hidden);
         }
     </style>
-
-
+   
+   
    <style>
 .label {
   color: white;
   padding: 10px;
-
+  
 }
-.username {background-color: #008080;} /* Green */
+.username {background-color: #04AA6D;} /* Green */
 .show {background-color: #2196F3;} /* Blue */
 .warning {background-color: #ff9800;} /* Orange */
-.danger {background-color: #f44336;} /* Red */
-.other {background-color: #e7e7e7; color: black;} /* Gray */
+.danger {background-color: #f44336;} /* Red */ 
+.other {background-color: #e7e7e7; color: black;} /* Gray */ 
 </style>
 
+
+  
 </head>
 
-<body style="background-color:#8A9A5B">
+<body style="background-color:#FDEDEC ;background-image: url("background.jpg")>
+
+
+
+ 
     <div class="text-center" >
-        <h2> Product Recommendation System based on Users Reviews & Ratings </h2>
-
-         <h5> Author: Mritunjay Pandey</h5>
-
+        <h2> Sentiment Based Product Recommendation System</h2>
+        
+         <h5> Done By: Mritunjay Pandey</h5>
+        
     </div>
+    
+    
      <div>
-        <h2 Author: Mritunjay Pandey</h2>
+        <h2 Done By: Mritunjay Pandey</h2>
     </div>
-
+     
         </div>
     </nav>
 
     <div class="container" style="margin-top:30px">
-        <p class="display-7">Top Five recommended products for the input User ID below :</p>
+        <p class="display-7">Recommended 5 products based on the entered user name will appear here :</p>
         <div class="jumbotron">
             <div class="form-row mb-3">
                 <label >
+                
+                <span class="label username"> User Name</span>
 
-                <span class="label username"> User ID</span>
         </label>
                 <div class="col-lg-7">
                     <input class="form-control basic" type="text" autocomplete="off" >
+
                 </div>
                 <div class="col-lg-3">
+                
                 <button type="button" id="search" class="btn btn-block btn-outline-secondary basicAutoCompleteShowBtn">
-            Submit
+            Submit 
           </button>
+                   
                 </div>
                 <div class="col-lg-12">
-                    <p class=""> Sample ids : "mas0814, mabelle, shedove, sheba, marsh" </p>
+                    <p class=""> Examples for the available users: 'joshua,rebecca,samantha,nicole or kimmie' </p>
                 </div>
             </div>
 
@@ -161,9 +174,86 @@
             </div>
         </div>
 
-
+<!--
+        <div class="jumbotron">
+            <div class="form-row mb-3">
+                <div class="col-lg-8">
+                <p class=""> This is a simple interface to apply the sentimentanalysis for the product reviews; you can give it a try: </p>
+                    <label for="exampleFormControlTextarea1" class="form-label">
+                    <span class="label show">Please write your Review </span>  </label>
+                    <textarea class="form-control" id="sent" rows="7" placeholder="e.g. it was a great product"></textarea>
+                    <div class="" rows="5">
+                        <button id="change" class="btn btn-block btn-outline-primary"> Analyse </button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="" rows="6">
+                        <div class="invisible emoji-smile" id="emoji-smile">
+                            <div class="face">
+                                <div class="eyebrow-left"></div>
+                                <div class="eyebrow-right"></div>
+                                <div class="eye-left"></div>
+                                <div class="eye-right"></div>
+                                <div class="mouth-happy"></div>
+                            </div>
+                            <p class="display-7" style="color: green;">This review is classified as possitive review</p>
+                        </div>
+                    </div>
+                    <div class="" rows="6">
+                        <div class="invisible emoji-sad" id="emoji-sad">
+                            <div class="face">
+                                <div class="eyebrow-left"></div>
+                                <div class="eyebrow-right"></div>
+                                <div class="eye-left"></div>
+                                <div class="eye-right"></div>
+                                <div class="mouth-sad"></div>
+                            </div>
+                            <p class="display-7" style="color: red;">This review is classified as negative review</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="jumbotron" id="sentimentanalysys">
+                <div class="col-lg-12">
+                    <label for="exampleFormControlTextarea1" class="form-label">Enter Review </label>
+                    <textarea class="form-control" id="sent" rows="7" placeholder="e.g. this product is very good"></textarea>
+                    <div class="" rows="5">
+                        <button id="change" class="btn btn-block btn-outline-primary"> Analyse </button>
+                    </div>
+                    <br/>
+                    <div class="" rows="6">
+                        <div class="invisible emoji-smile" id="emoji-smile">
+                            <div class="face">
+                                <div class="eyebrow-left"></div>
+                                <div class="eyebrow-right"></div>
+                                <div class="eye-left"></div>
+                                <div class="eye-right"></div>
+                                <div class="mouth-happy"></div>
+                            </div>
+                            <p class="display-7">This review is classified as possitive review</p>
+                        </div>
+                    </div>
+                    <div class="" rows="6">
+                        <div class="invisible emoji-sad" id="emoji-sad">
+                            <div class="face">
+                                <div class="eyebrow-left"></div>
+                                <div class="eyebrow-right"></div>
+                                <div class="eye-left"></div>
+                                <div class="eye-right"></div>
+                                <div class="mouth-sad"></div>
+                            </div>
+                            <p class="display-7">This review is classified as negative review</p>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+-->
+     
         <script>
             $(function() {
+                //$(".emoji-smile").hide();
+                //$(".emoji-sad").hide();
                 $("#change").on("click", function() {
                     var text = $('#sent').val();
                     if (text != '') {
@@ -192,6 +282,7 @@
 
                 });
             });
+            //$('.select').autoComplete();
         </script>
         <script>
             function onSelectItem(item, element) {
@@ -200,6 +291,29 @@
                     '<b>Value:</b> ' + item.value + ' - <b>Label:</b> ' + item.label
                 );
             }
+
+
+
+            $(document).ready(function() {
+                $.ajax({
+                    url: "/userList",
+                    success: function(result) {
+                        arr = result.split(',')
+                        let obj = {}
+                        arr.forEach(item => {
+                            obj[item] = item
+                        })
+
+                        $('.basic').autocomplete({
+                            //source: result.split(','),
+                            source: obj,
+                            onSelectItem: onSelectItem,
+                            highlightClass: 'text-danger'
+                        });
+                    }
+                });
+            });
+
 
             $('#search').click(function() {
                 user = $('.basic').val();
@@ -217,7 +331,8 @@
                                         $('<td>').text(item.brand),
                                         $('<td>').text(item.manufacturer),
                                         $('<td>').text(item.categories)
-                                    );
+                                    ); //.appendTo('#records_table');
+                                    //console.log($tr.wrap('<p>').html());
                                     $tr.prependTo('table > tbody');
                                 });
                             });
