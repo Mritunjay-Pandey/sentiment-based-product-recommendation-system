@@ -33,6 +33,7 @@ class Recommendation:
     def getTopProducts(self, user):
         items = self.user_final_rating.loc[user].sort_values(ascending=False)[0:20].index
         tfs=pd.read_pickle('models/tfidf.pkl')
+        items=items.get_level_values('productId').unique().tolist()
         temp=self.data[self.data.id.isin(items)]
         X = tfs.transform(temp['Review'].values.astype(str))
         temp=temp[['id']]
@@ -48,19 +49,11 @@ class Recommendation:
         items = self.user_final_rating.loc[user].sort_values(ascending=False)[0:20].index
         tfs=pd.read_pickle('models/tfidf.pkl')
         print(items)
-        print('Mritunjay')
         print(tfs)
-        print('Mritunjay')
         print(self.data)
-        print('Mritunjay123')
-        #mdl=pd.read_pickle('final_lr.pkl')
-        #features = pickle.load(open('features.pkl','rb'))
-        #vectorizer = TfidfVectorizer(vocabulary = features)
         items=items.get_level_values('productId').unique().tolist()
-        print(items)
         temp=self.data[self.data.id.isin(items)]
         print(temp)
-        print('Mritunjay')
         X = tfs.transform(temp['Review'].values.astype(str))
         temp=temp[['id']]
         temp['prediction'] = self.model.predict(X)
